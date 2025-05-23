@@ -1,4 +1,5 @@
-import { IsEnum, IsString, Length, Matches, validate } from 'class-validator';
+import { IsEnum, IsString, validate } from 'class-validator';
+import { Length, Matches } from 'class-transform';
 import { BotContext } from '../bot.update';
 import { plainToInstance } from 'class-transformer';
 import { Weekdays } from '../weekday.enum';
@@ -42,7 +43,7 @@ export async function validateAndReply<T extends object>(
   if (errors.length > 0) {
     const cons = errors[0].constraints;
     if (cons) {
-      const fristError = Object.values(cons)[0];
+      const fristError = Object.values(cons)[0] as string;
       const message = fristError;
       await ctx.reply(message);
       return false;

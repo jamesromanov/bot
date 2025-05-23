@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.WeekdayDto = exports.TimeDto = exports.AddressDto = exports.NameDto = void 0;
 exports.validateAndReply = validateAndReply;
 const class_validator_1 = require("class-validator");
+const class_transform_1 = require("class-transform");
 const class_transformer_1 = require("class-transformer");
 const weekday_enum_1 = require("../weekday.enum");
 class NameDto {
@@ -20,10 +21,10 @@ class NameDto {
 exports.NameDto = NameDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Matches)(/^[^\d]*$/, {
+    (0, class_transform_1.Matches)(/^[^\d]*$/, {
         message: '⛔️Ism raqamlardan iborat bolishi mumkin emas!',
     }),
-    (0, class_validator_1.Length)(5, 50, {
+    (0, class_transform_1.Length)(5, 50, {
         message: '⛔️Ism kamida 5 ta beldigan iborat bolishi kerak!',
     }),
     __metadata("design:type", String)
@@ -34,7 +35,7 @@ class AddressDto {
 exports.AddressDto = AddressDto;
 __decorate([
     (0, class_validator_1.IsString)(),
-    (0, class_validator_1.Length)(5, 100, {
+    (0, class_transform_1.Length)(5, 100, {
         message: '⛔️Manzil kamida 5 ta belgidan iborat bolishi kerak!',
     }),
     __metadata("design:type", String)
@@ -44,7 +45,7 @@ class TimeDto {
 }
 exports.TimeDto = TimeDto;
 __decorate([
-    (0, class_validator_1.Matches)(/^\d{2}:\d{2}$/, {
+    (0, class_transform_1.Matches)(/^\d{2}:\d{2}$/, {
         message: '⛔️Vaqt 00:00 formatida bolishi kerak!',
     }),
     __metadata("design:type", String)
