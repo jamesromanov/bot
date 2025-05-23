@@ -29,6 +29,7 @@ exports.AppModule = AppModule = __decorate([
                 storage: new throttler_storage_redis_1.ThrottlerStorageRedisService(new ioredis_1.Redis({
                     port: Number(process.env.REDIS_PORT) || 6379,
                     host: process.env.REDIS_HOST,
+                    password: process.env.REDIS_PASSWORD,
                 })),
             }),
             nestjs_telegraf_1.TelegrafModule.forRoot({
